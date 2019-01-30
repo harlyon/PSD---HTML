@@ -1,0 +1,21 @@
+{
+  "name": "gulptest",
+  "version": "0.0.1",
+  "description": "my first gulp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giordan B",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-sass": "^2.0.4",
+    "jshint-stylish": "^2.0.1",
+    "pkg": "0.0.1"
+  }
+}
