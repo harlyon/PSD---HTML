@@ -1,0 +1,122 @@
+
+// HAMBURGER styles
+
+@import 'colors';
+
+// User defined
+$baseColor   : $darkgray;
+$bgColor     : $black;
+$accentColor : $red;
+$size        : 50px;
+$barWidth    : 0.6;
+$barHeight   : 0.065;
+$barGap      : 0.35;
+
+// Generated values
+$center      : ( $size * ( ( 1 - $barWidth ) / 2 ) );
+$barWidth    : ( $size * $barWidth );
+$barHeight   : ( $size * $barHeight );
+$middle      : ( $size / 2 - ( $barHeight / 2 ) );
+$gap         : ( $size / 3 * ( 1 - $barGap ) );
+  
+// Nav class 
+.hamNav {
+  position: fixed;
+  top: 82px;
+  width: 100%;
+  height: 100%;
+  display: none;
+  padding: 0;
+  background: $bgColor;
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    a {
+      display: block;
+      width: 100%;
+      // height: 80px;
+      border-bottom: 1px solid rgb(49, 49, 49);
+      padding: 25px 0;
+      font-size: 2em;
+      font-weight: 100;
+      line-height: 100%;
+      color: $baseColor;
+      text-decoration: none;
+      transition: color 0.2s, background 0.3s;
+      &:hover {
+        background: $accentColor;
+        color: $bgColor;
+        cursor: pointer;
+      } 
+    }
+  }
+}
+
+
+// Toggle class
+.toggle {
+  margin: 15px;
+  font-size: 0;
+  font-family: a;
+  position: absolute;
+  display: none;
+  z-index: 99999999999999;
+  // display: block;
+  background: $bgColor;
+  border: none;
+  width: $size;
+  height: $size;
+  top: 0px;
+  right: 0px;
+  span, &:before, &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: $barWidth;
+    height: $barHeight;
+    background: $baseColor; 
+    top: 0;
+    left: 0;
+    transition: transform 0.2s, background 0.2s, opacity 0.1s;
+  }
+  
+  span { 
+    transform: translate3d($center, $middle, 0);
+  } 
+  
+  &:before {
+    transform: translate3d($center, ( $middle - $gap ), 0);
+  }
+  
+  &:after { 
+    transform: translate3d($center, ( $middle + $gap ), 0);
+  }
+  
+  &:hover {
+    span, &:before, &:after { 
+      background: $accentColor;
+    }
+  }
+  
+  &.open { 
+  
+    span {
+      opacity: 0;  
+    }
+    
+    &:before {
+      transform: translate3d($center, $middle, 0) rotate(90deg);
+    }
+    
+    &:after {
+      transform: translate3d($center, $middle, 0) rotate(0deg);    
+    }
+  }
+ 
+  &:focus, &:active { 
+    outline: none;
+    border: none;
+  }
+} 

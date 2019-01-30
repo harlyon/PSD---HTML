@@ -1,0 +1,629 @@
+
+// Coded by Andrew Dyke Oct. 2015
+// Design from Template
+
+@import 'colors';
+@import 'hamburger';
+@import 'setup';
+
+$red: #fe6367;
+$black: #2a2a2a;
+$darkgray: #666666;
+$gray: #8c8888;
+$lightgray: #eeeeee;
+
+
+/* GLOBAL STYLES */
+:after {
+	color: black;
+	font-family: arial;
+	font: .8rem;
+	text-transform: none;
+}
+
+@mixin fontSize($number) {
+	font-size: $number * 1px;
+	font-size: ($number / 10) * 1rem;
+}
+
+@mixin flexWrap {
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:row;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	@include fontSize(14);
+	font-family: PT Sans, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: $black;
+}
+
+h1,h2,h3, {
+	margin: 0; 
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 3.5rem;
+	span {
+		color: $red;
+	}
+}
+
+ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+li a {
+	text-decoration: none;
+	color:white;
+	@include fontSize(13);
+}
+
+.wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+section {
+	padding: 85px 0;
+}
+
+.title {
+	text-align: center;
+	margin: 0 0 70px;
+}
+.title:after {
+	content: '_____';
+}
+
+
+.backGrey {
+	background:#eee;
+}
+
+a {
+	text-decoration: none;
+}
+
+.fa-chevron-circle-right {
+	font-size: 1.7rem;
+	color: black;
+}
+
+
+
+/* NAV ****************************************/
+
+nav {
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+	background:$black;
+	padding: 20px 0;
+	border-top: 1px solid black;
+	li a {
+	transition: all .6s ease;
+	}
+	li a:hover {
+	border-top: 3px solid $red;
+	}
+}
+
+.flexWrap {
+	display:flex;
+	flex-wrap: wrap;
+	flex-direction:row;
+	justify-content:space-around;	
+	.logo a {
+		width: 225px;
+	}
+}
+
+.flexNav a:first-child {
+	flex: 1 0 10%;
+}
+	
+.flexNav ul {
+	flex:1 0 10%;
+	align-items: center;
+	@include flexWrap();
+	& > * {
+		flex:1 0 auto;
+		text-align: right;
+		// margin: 0 5px;
+		text-transform: uppercase;
+    	font-weight: 100;
+	}
+	a {
+		flex: 1 0 85%;
+		padding:10px;
+	}
+	a:hover {
+		border-top: 1px solid $red;
+	}
+	li {
+		text-align: right;
+	}
+	li:nth-child(7) {
+		padding-right: 20px;
+		
+	}
+	li:last-child {
+		border-left: 1px solid rgb(255, 255, 255);
+		max-width: 40px;
+	}
+}
+
+.column {
+	flex-direction:column;
+}
+
+/* HEADER *************************** */
+
+header {
+	background: url(../assets/header-herobg.jpg) no-repeat center center;
+	min-height: 75vh;
+	background-size: cover;
+	height: 90vh;
+	position: relative;
+	color: rgb(255, 255, 255);
+	h1 {position: relative;
+		z-index: 999;
+		color:white;
+		margin: 0;
+		font-size: 4.6rem;
+	    letter-spacing: 0.5px;
+	    font-weight: 600;
+	}
+	p {
+		margin-top: 0;
+		max-width: 40%;
+		font-size: 1.6rem;
+	}
+	img {
+		overflow: hidden;
+		position:absolute;
+		right:0;
+		width: 62%;
+		bottom:-87px;
+	}
+}
+
+.flexHeaderWrap {
+	display: flex;	
+	flex-wrap: wrap;
+	flex-direction: row;
+	// justify-content: space-around;
+	align-items: center;
+	position: relative;
+	height: 100%;	
+}
+
+.wrap50 {
+	padding: 0 20px;
+}
+
+/* WHY YOGI? *************************** */
+
+section.why {
+	padding: 50px 0;
+	margin-top: 50px;
+}
+
+.heroBox {
+    margin: 50px 20px;
+    min-width: 288px;
+    text-align: center;
+    flex: 1 0 calc(33.33% - 40px);
+    color: $gray;
+    	h4 {
+			margin: 20px 0;
+			text-transform: uppercase;
+			font-weight: 100;
+			color: $black
+		}
+		p {
+			margin: 26px 0;
+		}
+		p:last-child {
+			margin: 50px 0 0;
+			color: black;
+		}
+}
+
+i.large {
+	font-size: 5rem;
+	color: $red;
+}
+
+.heroBox span {
+	padding-left: 6px;
+	font-size: 1.2rem;
+	color: black;
+}
+
+
+/* TRAINERS ********************************** */
+
+.trainBox {
+	flex: 1 0 calc(25% - 20px);
+	background: #eee;
+	text-align:center;
+	margin: 10px 10px;
+	
+		div {
+			margin-bottom: 30px;
+		}
+		div h4 {
+			font-size: 1.8rem;
+			margin: 20px 0 5px;
+			text-transform: none;
+			font-weight: 100;
+		}
+		p {
+			color: grey;
+			margin: 0;
+			padding: 0;
+		}
+		div:after {
+			font-size: .8rem;
+			color: black;
+			content: '____';
+			margin-bottom: 10px;
+			margin: 0 0 10px;
+		}
+}
+
+.trainBox img {
+	width: 100%;
+}
+
+/* I LOVE YOGI QUOTE ************************************* */
+
+.quote {
+	background: url(../assets/testimonial-bg.jpg) no-repeat center;
+	background-size: cover;
+	color: white;
+	padding: 120px 0;
+		h2 {
+			font-size: 4.5rem;
+			letter-spacing: 1px;
+			margin-bottom: 10px;
+			font-weight: 100;
+			margin: 10px 40px;
+		}
+		blockquote {
+			font-size: 1.8rem;
+			font-weight: 100;
+			margin: 20px 80px;
+			line-height: 34px;
+			font-style: italic;
+		}
+		blockquote:before {
+			content: '';
+		}
+		blockquote:after {
+			content: '';
+		}
+		div {
+			margin: 50px 0 0;
+			line-height: 10px;
+				p:first-child {
+					color: $red;
+					letter-spacing: 1px;
+					margin: 80px 0 0;
+				}
+				p:last-child {
+					font-size: 1.4rem;
+					letter-spacing: 1.5px;
+					font-style: italic;
+					color: rgb(164,164,164);
+				}
+		}
+}
+
+/* PACKAGES ************************************/
+.title {
+	
+	h2 {
+		color: $black;
+		font-size: 3.6rem;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+		font-weight: 100;
+		margin: 10px 40px;
+	}
+	p {
+		margin: auto;
+		color: gray;
+		font-size: 1.8rem;
+		max-width: 700px;
+	}
+}
+
+.space {
+	justify-content:space-between;
+}
+
+.packBox {
+	flex: 1 0 calc(25% - 40px);
+	box-shadow: 0 0 40px rgb(222,222,222);
+	margin: 20px;
+	min-width: 220px;
+}
+
+.packBox ul {
+	background: white;
+	text-align: center;    
+    line-height: 40px;
+		li {
+			position: relative;
+		}
+    	li:first-child, {
+       		padding: 20px 0;
+    		color: white;
+    		font-size: 1.8rem;
+    		line-height: 5px; 
+    			p:first-child {
+    				font-size: 1.3rem;
+    			}
+    			p:nth-child(2) {
+    				text-transform: uppercase;
+    				line-height: 20px;
+    			}
+    	}
+    	li:nth-child(2) {
+    		color: $black;
+    		font-weight: bold;
+    		padding: 40px 0;
+    		background: $lightgray;
+    		font-size: 8rem;
+    	}
+    	li sup {
+		  font-size: 43px;
+		  position: relative;
+		  top:-22px;
+		}
+
+    	li:nth-child(3), li:nth-child(4),
+    	li:nth-child(5) {
+    		border-bottom: 1px solid $lightgray;
+    	}
+    	li:nth-child(3) {
+    		padding-top: 20px;
+    	}
+    	li:nth-child(5) {
+    		padding-bottom: 20px;
+    	}
+    	li:last-child {
+    		color: white;
+    		text-transform: uppercase;
+    		padding: 6px;
+    	}
+    	.packBox ul li.taller {
+			padding: 10px 0;
+		}
+}
+
+.gray {
+	background: $gray;
+}
+.darkGray {
+	background: $darkgray;
+}
+.red {
+	background: $red;
+}
+.black {
+	background: $black;
+}
+
+
+
+/* BLOG **************************************** */
+
+.blogPost {
+	
+	flex: 1 0 calc(33.33% - 40px);
+	margin: 10px 20px 0;
+		div	{
+			position: relative;
+			.fa-file-image-o {
+				position: absolute;
+				bottom: 5px;
+				background: $red;
+				padding: 20px;
+				color: white;
+				font-size: 2.4rem;
+			}
+		}
+	 	h4 {
+	 		font-size: 1.75rem;
+	 		margin-bottom: 10px;
+	 	}
+	 	:nth-child(3) {
+	 		margin: 0;
+	 		font-style: italic;
+	 		color: $gray;
+	 		font-size: 1.3rem;
+	 	}
+	 	:nth-child(4) {
+			line-height: 26px;
+			color: $darkgray;
+	 	}
+	 	span {
+	 		margin-left: 5px;
+	 	}
+}
+
+.blogPost img {
+	width:100%;
+}
+
+
+/* SIGN UP **************************************/
+
+.signUp {
+	background: url(../assets/membership-bg.jpg);
+	background-size: cover;
+	width: 100%;
+	color: white;
+	font-size: 1.8rem;
+	font-weight: 100;
+		p {
+			margin: 10px 0 20px;
+		}
+		p:nth-child(2) {
+			font-size: 2.8rem;
+			padding-bottom: 20px;
+		}
+		p:last-child {
+			margin-top: 30px;
+		}
+		a {
+			text-transform: uppercase;
+			background: $black;
+			color: white;
+			padding: 14px 84px;
+			letter-spacing: .5px;
+			font-size: 2.3rem;
+		}
+}
+.textCenter {
+	text-align:center;
+}
+
+
+/* FOOTER ************************************* */
+
+footer {
+	color: $darkgray;
+	background: $black;
+	padding: 50px 0;
+}
+
+.footBox {
+	flex: 1 0 calc(25% - 80px);
+
+	margin: 0 40px;
+		div.address {
+			line-height: 35px;
+		}
+}
+
+.footBox h4 {
+	color: white;
+	font-size: 1.7rem;
+	margin-bottom: 0;
+}
+
+.underline:after {
+	content: '_____';
+	color: white;
+	font-size: 1rem;
+}
+
+.footBox p span {
+	color: $red;
+}
+
+.footBox .social i {
+	color: $gray;
+	padding: 12px 13px;
+	border: 1px solid $gray;
+	border-radius: 50%;
+}
+
+.footBox i.wider {
+	padding: 12px 15px;
+}
+
+.social li {
+	margin-left: 5px;
+		.social a i {
+			padding: 10px 0;
+		}
+		a:hover {
+			color: white;
+		}
+}
+
+.footBox ul, .footBox p {
+	margin: 15px 0;
+}
+
+.footBox ul {
+	line-height: 38px;
+	list-style-type: bullet;
+}
+
+.footBox ul:nth-child(3) li {
+	border-bottom: 2px dotted $gray;
+	font-weight: 100;
+}
+
+.fa-circle {
+	font-size: 8px;
+	margin: 0;
+	padding:0 5px 0; 
+}
+
+form.email {
+	margin-top: 30px;
+	color: $gray;
+		input, textarea {
+			width: 100%;
+			margin-bottom: 10px;
+			border: 1px solid $gray;
+			background: $black;
+			color: $gray;
+		}
+		input {
+			text-transform: uppercase;
+			font-size: 1.2rem;
+			height: 40px;
+			padding: 6px 10px 5px; 
+			color: $gray;
+		}
+		textarea {
+			height: 125px;
+			width: 100%;
+			color: $gray;
+			padding: 10px;
+		}
+		button {
+			background: $red;
+			color: white;
+		    border: 0;
+		    width: 160px;
+		    height: 45px;
+		    margin: 12px 0;
+		    font-size: 1.8rem;
+		}
+}
+
+/* COPYRIGHT */
+
+.copyRight {
+	background: rgb(32,32,32);
+	color: grey;
+	margin: 0;
+	p {
+		margin: 0;
+		padding: 50px 0;
+	}
+}
+
+@import 'responsive';
+
